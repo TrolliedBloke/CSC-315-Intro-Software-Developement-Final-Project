@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product • Air Jordan 4 Retro “Cool Grey”</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script defer src="/transition.js"></script>
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="container nav">
+      <!-- Logo -->
+      <div class="nav__brand">
+        <a href="/index.html" class="nav__home-link">
+        <img src="/assets/logo.png" alt="StockY logo" class="nav__logo-img" />
+        </a>
+        <strong>StockY</strong>
+      </div>
+
+      <!-- Search -->
+      <label class="nav__search" aria-label="Search">
+        <svg width="16" height="16" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" stroke="currentColor" fill="none" />
+          <line x1="12" y1="12" x2="15" y2="15" stroke="currentColor" />
+        </svg>
+        <input type="search" placeholder="Search sneakers, brands…" />
+      </label>
+
+      <!-- Right-side buttons -->
+      <div class="nav__cta">
+        <a class="btn" href="login.html">Login</a>
+        <a class="btn btn--primary" href="register.html">Sign Up</a>
+        <button id="theme-toggle" class="btn" aria-label="Toggle color theme" title="Theme">
+  🌙
+</button>
+      </div>
+    </div>
+
+    <!-- Category bar -->
+    <nav class="category-bar">
+      <div class="container category-bar__inner">
+        <a class="is-active" href="#">All</a>
+        <a href="#">Brands</a>
+        <a href="#">Trending</a>
+        <a href="#">Mens</a>
+        <a href="#">Womens</a>
+        <a href="#">Kids</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container page">
+    <section class="section product">
+      <!-- Left: gallery -->
+      <div class="product__gallery card">
+        <div class="product__main" aria-live="polite">
+          <img src="assets/placeholder-shoe.png" alt="Air Jordan 4 Retro Cool Grey shoe" />
+        </div>
+        <div class="product__thumbs">
+          <button class="thumb is-active"><img src="assets/placeholder-shoe.png" alt="Main view"></button>
+          <button class="thumb"><img src="assets/placeholder-shoe-2.png" alt="Side view"></button>
+          <button class="thumb"><img src="assets/placeholder-shoe-3.png" alt="Back view"></button>
+        </div>
+      </div>
+
+      <!-- Right: info -->
+      <aside class="product__info">
+        <header class="product__header">
+          <h1 class="section__title">Air Jordan 4 Retro “Cool Grey”</h1>
+          <p class="card__meta">Style Code: 308497-007 • Year: 2019 • Condition: Brand New in Box</p>
+        </header>
+
+        <div class="product__sizes">
+          <p class="label">Select Size (US M):</p>
+          <div class="size-grid" role="listbox" aria-label="Shoe sizes">
+            <!-- add/remove as needed -->
+            <button role="option" class="size">8</button>
+            <button role="option" class="size">8.5</button>
+            <button role="option" class="size">9</button>
+            <button role="option" class="size">9.5</button>
+            <button role="option" class="size">10</button>
+            <button role="option" class="size">10.5</button>
+            <button role="option" class="size">11</button>
+            <button role="option" class="size">11.5</button>
+            <button role="option" class="size">12</button>
+            <button role="option" class="size">12.5</button>
+            <button role="option" class="size">13</button>
+            <button role="option" class="size">14</button>
+          </div>
+        </div>
+
+        <div class="buy-bar card">
+          <div class="price">
+            <span class="price__label">Price</span>
+            <strong class="price__value">$289.00</strong>
+          </div>
+          <button class="btn btn--primary buy-bar__cta">Checkout</button>
+        </div>
+
+        <details class="accordion" open>
+          <summary>Description</summary>
+          <div class="accordion__body">
+            <ul class="product__specs">
+              <li><strong>Condition:</strong> Brand New (Deadstock)</li>
+              <li><strong>Style Code:</strong> 308497-007</li>
+              <li><strong>Year of Release:</strong> 2019</li>
+              <li><strong>Colorway:</strong> Cool Grey / White</li>
+            </ul>
+            <p class="mt-8">Classic AJ4 palette with nubuck upper and chrome accents. True-to-size fit.</p>
+          </div>
+        </details>
+      </aside>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">You Might Also Like</h2>
+      <div class="products-grid">
+        <!-- reuse your product cards, link back to product.html?id=... -->
+        <a class="card card--product" href="product.html?id=aj4-bred">
+          <div class="card__img">Shoe #1</div>
+          <div class="card__body"><h3 class="card__title">AJ4 “Bred”</h3><p class="card__meta">$310</p></div>
+        </a>
+        <!-- 3–6 more -->
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <nav class="footer-nav">
+        <a href="/index.html">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">Sizes</a>
+        <a href="#">FAQ</a>
+        <a href="#">Contact</a>
+        <a href="#">Our Story</a>
+      </nav>
+    </footer>
+  </main>
+</body>
+</html>
