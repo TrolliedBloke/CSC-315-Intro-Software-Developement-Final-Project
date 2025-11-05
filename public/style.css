@@ -501,3 +501,78 @@ hr { border: 0; border-top: 1px solid var(--border); }
 @media (prefers-reduced-motion: reduce){
   .page{transition:none!important; opacity:1!important;transform:none!important;}
 }
+
+/* ---------- 13) AUTH LAYOUT ---------- */
+.auth {
+  display: grid;
+  place-items: center;
+  min-height: calc(100dvh - 220px); /* header+footer space */
+}
+
+.auth-card {
+  width: min(560px, 100% - 2rem);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+/* Tabs */
+.auth-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.auth-tab {
+  padding: .9rem 1rem;
+  text-align: center;
+  font-weight: var(--fw-600);
+  color: var(--muted);
+  border-right: 1px solid var(--border);
+}
+.auth-tab:last-child { border-right: 0; }
+.auth-tab.is-active,
+.auth-tab:hover { color: var(--text); }
+
+/* Body */
+.auth-body {
+  padding: var(--space-8);
+  display: grid;
+  gap: var(--space-6);
+}
+
+/* Fields */
+.field { display: grid; gap: .4rem; }
+.field label { font-size: var(--fs-14); color: var(--muted); }
+.input {
+  height: 44px;
+  padding: 0 .9rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+}
+.input:focus { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.field--password { position: relative; }
+.toggle-pass {
+  position: absolute;
+  right: .5rem; top: 34px;
+  height: 30px; min-width: 36px;
+  border: 0; background: transparent; color: var(--muted); cursor: pointer;
+}
+
+/* Helper rows */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.helper-text { font-size: var(--fs-12); color: var(--muted); }
+
+/* Primary button full width */
+.btn--block { width: 100%; padding-block: .8rem; }
