@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StockY – Womens</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script defer src="/script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <div class="nav__brand">
+        <a href="/index.html" class="nav__home-link">
+          <img src="/assets/logo.png" alt="StockY logo" class="nav__logo-img" />
+        </a>
+        <strong>StockY</strong>
+      </div>
+      <label class="nav__search" aria-label="Search">
+        <svg width="16" height="16" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" stroke="currentColor" fill="none" />
+          <line x1="12" y1="12" x2="15" y2="15" stroke="currentColor" />
+        </svg>
+        <input type="search" placeholder="Search sneakers, brands…" />
+      </label>
+      <div class="nav__cta">
+        <a class="btn" href="/login.html">Login</a>
+        <a class="btn btn--primary" href="/register.html">Sign Up</a>
+        <button id="theme-toggle" class="btn" title="Theme">🌙</button>
+      </div>
+    </div>
+
+    <nav class="category-bar">
+      <div class="container category-bar__inner">
+        <a href="/index.html">All</a>
+        <a href="/products/brands.html">Brands</a>
+        <a href="/products/trending.html">Trending</a>
+        <a href="/products/mens.html">Mens</a>
+        <a href="/products/womens.html">Womens</a>
+        <a href="/products/kids.html">Kids</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container page">
+    <section class="hero">
+      <div class="hero__slide">Womens Sneakers</div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">Top Womens Styles</h2>
+      <div class="products-grid">
+        <a href="#" class="card card--product"><div class="card__img">Nike Air Max 270</div></a>
+        <a href="#" class="card card--product"><div class="card__img">Jordan 1 Mid</div></a>
+        <a href="#" class="card card--product"><div class="card__img">Adidas Forum Low</div></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <nav class="footer-nav">
+      <a href="/index.html">Home</a>
+      <a href="/products/womens.html">Shop</a>
+      <a href="#">FAQ</a>
+      <a href="#">Contact</a>
+      <a href="#">Our Story</a>
+    </nav>
+  </footer>
+</body>
+</html>
