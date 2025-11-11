@@ -6,16 +6,16 @@
   <title>Product • Air Jordan 4 Retro “Cool Grey”</title>
   <link rel="stylesheet" href="/style.css" />
   <script defer src="/transition.js"></script>
+  <script defer src="/script.js"></script>
 </head>
 <body>
-
   <!-- ================= HEADER ================= -->
   <header class="site-header">
     <div class="container nav">
       <!-- Logo -->
       <div class="nav__brand">
         <a href="/index.html" class="nav__home-link">
-        <img src="/assets/logo.png" alt="StockY logo" class="nav__logo-img" />
+          <img src="/assets/logo.png" alt="StockY logo" class="nav__logo-img" />
         </a>
         <strong>StockY</strong>
       </div>
@@ -33,36 +33,35 @@
       <div class="nav__cta">
         <a class="btn" href="/login.html">Login</a>
         <a class="btn btn--primary" href="/register.html">Sign Up</a>
-        <button id="theme-toggle" class="btn" aria-label="Toggle color theme" title="Theme">
-  🌙
-</button>
+        <button id="theme-toggle" class="btn" aria-label="Toggle color theme" title="Theme">🌙</button>
       </div>
     </div>
 
     <!-- Category bar -->
     <nav class="category-bar">
       <div class="container category-bar__inner">
-        <a class="is-active" href="#">All</a>
-        <a href="#">Brands</a>
-        <a href="#">Trending</a>
-        <a href="#">Mens</a>
-        <a href="#">Womens</a>
-        <a href="#">Kids</a>
+        <a href="/index.html">All</a>
+        <a href="/products/brands.html">Brands</a>
+        <a href="/products/trending.html">Trending</a>
+        <a href="/products/mens.html">Mens</a>
+        <a href="/products/womens.html">Womens</a>
+        <a href="/products/kids.html">Kids</a>
       </div>
     </nav>
   </header>
 
+  <!-- ================= MAIN ================= -->
   <main class="container page">
     <section class="section product">
       <!-- Left: gallery -->
       <div class="product__gallery card">
         <div class="product__main" aria-live="polite">
-          <img src="assets/placeholder-shoe.png" alt="Air Jordan 4 Retro Cool Grey shoe" />
+          <img src="/assets/placeholder-shoe.png" alt="Air Jordan 4 Retro Cool Grey shoe" />
         </div>
         <div class="product__thumbs">
-          <button class="thumb is-active"><img src="assets/placeholder-shoe.png" alt="Main view"></button>
-          <button class="thumb"><img src="assets/placeholder-shoe-2.png" alt="Side view"></button>
-          <button class="thumb"><img src="assets/placeholder-shoe-3.png" alt="Back view"></button>
+          <button class="thumb is-active"><img src="/assets/placeholder-shoe.png" alt="Main view"></button>
+          <button class="thumb"><img src="/assets/placeholder-shoe-2.png" alt="Side view"></button>
+          <button class="thumb"><img src="/assets/placeholder-shoe-3.png" alt="Back view"></button>
         </div>
       </div>
 
@@ -75,20 +74,19 @@
 
         <div class="product__sizes">
           <p class="label">Select Size (US M):</p>
-          <div class="size-grid" role="listbox" aria-label="Shoe sizes">
-            <!-- add/remove as needed -->
-            <button role="option" class="size">8</button>
-            <button role="option" class="size">8.5</button>
-            <button role="option" class="size">9</button>
-            <button role="option" class="size">9.5</button>
-            <button role="option" class="size">10</button>
-            <button role="option" class="size">10.5</button>
-            <button role="option" class="size">11</button>
-            <button role="option" class="size">11.5</button>
-            <button role="option" class="size">12</button>
-            <button role="option" class="size">12.5</button>
-            <button role="option" class="size">13</button>
-            <button role="option" class="size">14</button>
+          <div class="size-grid" id="sizeGrid" role="listbox" aria-label="Shoe sizes">
+            <button role="option" class="size" data-size="8"   data-price="225">8</button>
+            <button role="option" class="size" data-size="8.5" data-price="234">8.5</button>
+            <button role="option" class="size" data-size="9"   data-price="256">9</button>
+            <button role="option" class="size" data-size="9.5" data-price="263">9.5</button>
+            <button role="option" class="size" data-size="10"  data-price="289">10</button>
+            <button role="option" class="size" data-size="10.5" data-price="282">10.5</button>
+            <button role="option" class="size" data-size="11"  data-price="271">11</button>
+            <button role="option" class="size" data-size="11.5" data-price="278">11.5</button>
+            <button role="option" class="size" data-size="12"  data-price="286">12</button>
+            <button role="option" class="size" data-size="12.5" data-price="267">12.5</button>
+            <button role="option" class="size" data-size="13"  data-price="259">13</button>
+            <button role="option" class="size" data-size="14"  data-price="250">14</button>
           </div>
         </div>
 
@@ -97,7 +95,7 @@
             <span class="price__label">Price</span>
             <strong class="price__value">$289.00</strong>
           </div>
-          <button class="btn btn--primary buy-bar__cta">Checkout</button>
+          <button id="checkoutBtn" class="btn btn--primary buy-bar__cta" disabled>Checkout</button>
         </div>
 
         <details class="accordion" open>
@@ -118,25 +116,96 @@
     <section class="section">
       <h2 class="section__title">You Might Also Like</h2>
       <div class="products-grid">
-        <!-- reuse your product cards, link back to product.html?id=... -->
-        <a class="card card--product" href="product.html?id=aj4-bred">
+        <a class="card card--product" href="/product.html?id=aj4-bred">
           <div class="card__img">Shoe #1</div>
           <div class="card__body"><h3 class="card__title">AJ4 “Bred”</h3><p class="card__meta">$310</p></div>
         </a>
-        <!-- 3–6 more -->
       </div>
     </section>
 
-    <footer class="site-footer">
-      <nav class="footer-nav">
-        <a href="/index.html">Home</a>
-        <a href="#">Shop</a>
-        <a href="#">Sizes</a>
-        <a href="#">FAQ</a>
-        <a href="#">Contact</a>
-        <a href="#">Our Story</a>
-      </nav>
-    </footer>
+    <!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <nav class="footer-nav">
+    <a href="/index.html">Home</a>
+    <a href="/products/brands.html">Shop</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/about.html">Our Story</a>
+  </nav>
+</footer>
+
   </main>
+
+  <script>
+    const PRODUCT = {
+      id: "aj4-cool-grey",
+      title: "Air Jordan 4 “Cool Grey”",
+      thumb: "/assets/placeholder-shoe.png"
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const grid = document.getElementById("sizeGrid");
+      const checkoutBtn = document.getElementById("checkoutBtn");
+      const priceEl = document.querySelector(".price__value");
+      const mainImg = document.querySelector(".product__main img");
+      const fmt = (n) => `$${Number(n).toFixed(2)}`;
+
+      // Restore previous selection (optional)
+      try {
+        const saved = JSON.parse(localStorage.getItem("cart") || "[]");
+        const item = Array.isArray(saved) ? saved[0] : null;
+        if (item?.size && item?.price) {
+          const btn = grid?.querySelector(`.size[data-size="${item.size}"]`);
+          if (btn) {
+            btn.classList.add("is-selected");
+            btn.setAttribute("aria-selected", "true");
+            priceEl.textContent = fmt(item.price);
+            checkoutBtn.disabled = false;
+          }
+        }
+      } catch (_) {}
+
+      // Thumbnail swap
+      document.querySelector(".product__thumbs")?.addEventListener("click", (e) => {
+        const t = e.target.closest(".thumb img");
+        if (!t || !mainImg) return;
+        mainImg.src = t.src;
+        document.querySelectorAll(".thumb").forEach(b => b.classList.remove("is-active"));
+        t.closest(".thumb")?.classList.add("is-active");
+      });
+
+      // Size selection
+      grid?.addEventListener("click", (e) => {
+        const btn = e.target.closest(".size");
+        if (!btn) return;
+
+        grid.querySelectorAll(".size").forEach(b => {
+          b.classList.remove("is-selected");
+          b.setAttribute("aria-selected", "false");
+        });
+        btn.classList.add("is-selected");
+        btn.setAttribute("aria-selected", "true");
+
+        const price = Number(btn.dataset.price);
+        priceEl.textContent = fmt(price);
+
+        const item = { ...PRODUCT, size: btn.dataset.size, price, qty: 1 };
+        localStorage.setItem("cart", JSON.stringify([item]));
+
+        checkoutBtn.disabled = false;
+      });
+
+      checkoutBtn?.addEventListener("click", (e) => {
+        const selected = document.querySelector(".size.is-selected");
+        if (!selected) {
+          e.preventDefault();
+          alert("Please select a size first.");
+          return;
+        }
+        window.location.href = "/checkout.html";
+      });
+    });
+  </script>
+
 </body>
 </html>

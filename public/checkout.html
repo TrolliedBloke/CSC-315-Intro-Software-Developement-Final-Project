@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout • StockY</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script defer src="/transition.js"></script>
+  <script defer src="/script.js"></script>
+  <script defer src="/checkout.js"></script>
+</head>
+<body>
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="container nav">
+      <div class="nav__brand">
+        <a href="/index.html" class="nav__home-link">
+          <img src="/assets/logo.png" alt="StockY logo" class="nav__logo-img" />
+        </a>
+        <strong>StockY</strong>
+      </div>
+
+      <label class="nav__search" aria-label="Search">
+        <svg width="16" height="16" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" stroke="currentColor" fill="none" />
+          <line x1="12" y1="12" x2="15" y2="15" stroke="currentColor" />
+        </svg>
+        <input type="search" placeholder="Search sneakers, brands…" />
+      </label>
+
+      <div class="nav__cta">
+        <a class="btn" href="/login.html">Login</a>
+        <a class="btn btn--primary" href="/register.html">Sign Up</a>
+        <button id="theme-toggle" class="btn" aria-label="Toggle color theme" title="Theme">🌙</button>
+      </div>
+    </div>
+
+    <nav class="category-bar">
+      <div class="container category-bar__inner">
+        <a href="/index.html">All</a>
+        <a href="/products/brands.html">Brands</a>
+        <a href="/products/trending.html">Trending</a>
+        <a href="/products/mens.html">Mens</a>
+        <a href="/products/womens.html">Womens</a>
+        <a href="/products/kids.html">Kids</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main class="container page">
+    <nav class="crumbs helper-text" aria-label="Breadcrumb">
+      <a href="/index.html">Home</a> › <a href="/product.html">Product</a> › <strong>Checkout</strong>
+    </nav>
+
+    <section class="checkout">
+      <form id="checkoutForm" class="checkout-grid" novalidate>
+        <!-- LEFT: form -->
+        <div class="checkout-col">
+          <!-- Contact -->
+          <div class="panel">
+            <h2 class="section__title">Contact</h2>
+            <div class="field"><label for="email">Email</label>
+              <input class="input" id="email" name="email" type="email" placeholder="you@example.com" required>
+            </div>
+            <div class="field"><label for="phone">Phone (for delivery)</label>
+              <input class="input" id="phone" name="phone" type="tel" placeholder="(555) 555-5555" required>
+            </div>
+          </div>
+
+          <!-- Shipping -->
+          <div class="panel">
+            <h2 class="section__title">Shipping address</h2>
+            <div class="grid-2">
+              <div class="field"><label for="first">First name</label>
+                <input class="input" id="first" name="first" required>
+              </div>
+              <div class="field"><label for="last">Last name</label>
+                <input class="input" id="last" name="last" required>
+              </div>
+            </div>
+            <div class="field"><label for="address">Address</label>
+              <input class="input" id="address" name="address" placeholder="123 Main St" required>
+            </div>
+            <div class="grid-3">
+              <div class="field"><label for="city">City</label>
+                <input class="input" id="city" name="city" required>
+              </div>
+              <div class="field"><label for="state">State</label>
+                <input class="input" id="state" name="state" maxlength="2" placeholder="CA" required>
+              </div>
+              <div class="field"><label for="zip">ZIP</label>
+                <input class="input" id="zip" name="zip" inputmode="numeric" maxlength="10" required>
+              </div>
+            </div>
+
+            <fieldset class="ship-method">
+              <legend class="label">Delivery</legend>
+              <label><input type="radio" name="ship" value="standard" checked> Standard (3–5 days) — Free</label>
+              <label><input type="radio" name="ship" value="express"> Express (1–2 days) — $15</label>
+            </fieldset>
+          </div>
+
+          <!-- Payment -->
+          <div class="panel">
+            <h2 class="section__title">Payment</h2>
+            <div class="field"><label for="cardName">Name on card</label>
+              <input class="input" id="cardName" required>
+            </div>
+            <div class="field"><label for="cardNumber">Card number</label>
+              <input class="input" id="cardNumber" inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456" required>
+            </div>
+            <div class="grid-3">
+              <div class="field"><label for="exp">Exp. (MM/YY)</label>
+                <input class="input" id="exp" inputmode="numeric" placeholder="08/27" required>
+              </div>
+              <div class="field"><label for="cvc">CVC</label>
+                <input class="input" id="cvc" inputmode="numeric" maxlength="4" placeholder="123" required>
+              </div>
+              <div class="field"><label for="promo">Promo code (optional)</label>
+                <input class="input" id="promo" placeholder="SUMMER10">
+              </div>
+            </div>
+
+            <label class="helper-text">
+              <input type="checkbox" id="agree" required> I agree to the Terms and Privacy Policy.
+            </label>
+
+            <button class="btn btn--primary btn--block" type="submit">Place order</button>
+          </div>
+        </div>
+
+        <!-- RIGHT: summary -->
+        <aside class="checkout-col">
+          <div class="panel">
+            <h2 class="section__title">Order summary</h2>
+
+            <ul id="summaryItems" class="summary-items">
+              <!-- Items injected by checkout.js from localStorage 'cart' -->
+            </ul>
+
+            <div class="totals">
+              <div><span>Subtotal</span><span id="tSub">$0.00</span></div>
+              <div><span>Shipping</span><span id="tShip">$0.00</span></div>
+              <div><span>Discount</span><span id="tDisc">-$0.00</span></div>
+              <hr>
+              <div class="grand"><span>Total</span><span id="tTotal">$0.00</span></div>
+            </div>
+          </div>
+
+          <a class="helper-text" href="/product.html">← Back to Product</a>
+        </aside>
+      </form>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <nav class="footer-nav">
+    <a href="/index.html">Home</a>
+    <a href="/products/brands.html">Shop</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/about.html">Our Story</a>
+  </nav>
+</footer>
+
+</body>
+</html>

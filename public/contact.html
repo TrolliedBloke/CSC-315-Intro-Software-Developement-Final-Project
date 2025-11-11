@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact • StockY</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script defer src="/transition.js"></script>
+  <script defer src="/script.js"></script>
+</head>
+<body>
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="container nav">
+      <div class="nav__brand">
+        <a href="/index.html" class="nav__home-link">
+          <img src="/assets/logo.png" alt="StockY logo" class="nav__logo-img" />
+        </a>
+        <strong>StockY</strong>
+      </div>
+
+      <label class="nav__search" aria-label="Search">
+        <svg width="16" height="16" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" stroke="currentColor" fill="none" />
+          <line x1="12" y1="12" x2="15" y2="15" stroke="currentColor" />
+        </svg>
+        <input type="search" placeholder="Search sneakers, brands…" />
+      </label>
+
+      <div class="nav__cta">
+        <a class="btn" href="/login.html">Login</a>
+        <a class="btn btn--primary" href="/register.html">Sign Up</a>
+        <button id="theme-toggle" class="btn" title="Theme">🌙</button>
+      </div>
+    </div>
+
+    <nav class="category-bar">
+      <div class="container category-bar__inner">
+        <a href="/index.html">All</a>
+        <a href="/products/brands.html">Brands</a>
+        <a href="/products/trending.html">Trending</a>
+        <a href="/products/mens.html">Mens</a>
+        <a href="/products/womens.html">Womens</a>
+        <a href="/products/kids.html">Kids</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main class="container page">
+    <section class="section" style="max-width:900px;margin-inline:auto">
+      <h1 class="section__title" style="margin-bottom:1rem">Contact Us</h1>
+      <p class="helper-text" style="margin-bottom:1.25rem">
+        Questions about sizing, orders, or the site? Send us a message and we’ll get back to you.
+      </p>
+
+      <div class="checkout-grid">
+        <!-- Left: form -->
+        <div class="checkout-col">
+          <form id="contactForm" class="panel" novalidate>
+            <div class="grid-2">
+              <div class="field">
+                <label for="name">Full name</label>
+                <input class="input" id="name" name="name" required />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input class="input" id="email" name="email" type="email" placeholder="you@example.com" required />
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div class="field">
+                <label for="topic">Topic</label>
+                <select class="input" id="topic" name="topic" required>
+                  <option value="">Select a topic…</option>
+                  <option>Order question</option>
+                  <option>Returns</option>
+                  <option>Sizing</option>
+                  <option>Account/Sign-in</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="orderId">Order # (optional)</label>
+                <input class="input" id="orderId" name="orderId" placeholder="e.g., 8123-ABCD" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="subject">Subject</label>
+              <input class="input" id="subject" name="subject" required />
+            </div>
+
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea class="input" id="message" name="message" rows="6" required></textarea>
+            </div>
+
+            <!-- spam honeypot (hidden) -->
+            <div class="sr-only">
+              <label for="website">Website</label>
+              <input id="website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <label class="helper-text" style="display:flex;gap:.5rem;align-items:center">
+              <input type="checkbox" id="consent" required />
+              I agree that my message may be stored for support purposes.
+            </label>
+
+            <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem">
+              <button type="submit" class="btn btn--primary">Send message</button>
+              <a class="btn" href="mailto:support@stocky.example" data-no-transition="true">Email us instead</a>
+            </div>
+          </form>
+
+          <!-- Success panel (hidden until submit) -->
+          <div id="contactSuccess" class="panel" style="display:none;text-align:center">
+            <h2 class="section__title">Thanks! ✅</h2>
+            <p class="helper-text">We received your message and will reply to <span id="echoEmail"></span>.</p>
+            <div style="margin-top:1rem;display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap">
+              <a class="btn" href="/index.html">Back to Home</a>
+              <a class="btn btn--primary" href="/faq.html">View FAQs</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: info -->
+        <aside class="checkout-col">
+          <div class="panel">
+            <h2 class="section__title">Support Hours</h2>
+            <p class="helper-text">Mon–Fri, 9am–5pm (PT)</p>
+            <hr />
+            <h3 class="section__title" style="font-size:1.1rem;margin-top:.5rem">Quick Links</h3>
+            <ul class="product__specs">
+              <li><a href="/faq.html">FAQ</a></li>
+              <li><a href="/orders.html">Order History (coming soon)</a></li>
+              <li><a href="/terms.html">Terms</a> • <a href="/privacy.html">Privacy</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <nav class="footer-nav">
+      <a href="/index.html">Home</a>
+      <a href="/products/brands.html">Shop</a>
+      <a href="/faq.html">FAQ</a>
+      <a class="is-active" href="/contact.html">Contact</a>
+      <a href="/about.html">Our Story</a>
+    </nav>
+  </footer>
+
+  <script>
+    // Simple client-side handler that stores submissions and shows a success panel.
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("contactForm");
+      const success = document.getElementById("contactSuccess");
+      const echoEmail = document.getElementById("echoEmail");
+
+      const getSubmissions = () => {
+        try {
+          const data = JSON.parse(localStorage.getItem("contactSubmissions") || "[]");
+          return Array.isArray(data) ? data : [];
+        } catch { return []; }
+      };
+      const saveSubmissions = (arr) =>
+        localStorage.setItem("contactSubmissions", JSON.stringify(arr));
+
+      form?.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Basic validation
+        const required = form.querySelectorAll("[required]");
+        for (const el of required) {
+          if (!el.value || !el.value.trim()) {
+            el.focus();
+            alert("Please fill in all required fields.");
+            return;
+          }
+        }
+
+        // Honeypot check
+        if (form.website && form.website.value) {
+          alert("Submission blocked.");
+          return;
+        }
+
+        const payload = {
+          name: form.name.value.trim(),
+          email: form.email.value.trim(),
+          topic: form.topic.value,
+          orderId: form.orderId.value.trim(),
+          subject: form.subject.value.trim(),
+          message: form.message.value.trim(),
+          consent: form.consent.checked,
+          submittedAt: new Date().toISOString()
+        };
+
+        const all = getSubmissions();
+        all.unshift(payload);
+        saveSubmissions(all);
+
+        // Show success state
+        echoEmail.textContent = payload.email || "your email";
+        form.style.display = "none";
+        success.style.display = "block";
+      });
+    });
+  </script>
+</body>
+</html>

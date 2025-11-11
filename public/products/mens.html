@@ -3,17 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>StockY – Mens</title>
-
-  <!-- ✅ Correct paths for your structure -->
+  <title>StockY • Mens</title>
   <link rel="stylesheet" href="/style.css" />
-  <script defer src="/script.js"></script>
+  <script defer src="/transition.js"></script>
+  <script defer src="/theme.js"></script>
 </head>
 <body>
   <!-- ================= HEADER ================= -->
   <header class="site-header">
     <div class="container nav">
-      <!-- Logo -->
       <div class="nav__brand">
         <a href="/index.html" class="nav__home-link">
           <img src="/assets/logo.png" alt="StockY logo" class="nav__logo-img" />
@@ -21,7 +19,6 @@
         <strong>StockY</strong>
       </div>
 
-      <!-- Search -->
       <label class="nav__search" aria-label="Search">
         <svg width="16" height="16" aria-hidden="true">
           <circle cx="7" cy="7" r="6" stroke="currentColor" fill="none" />
@@ -30,7 +27,6 @@
         <input type="search" placeholder="Search sneakers, brands…" />
       </label>
 
-      <!-- Right-side buttons -->
       <div class="nav__cta">
         <a class="btn" href="/login.html">Login</a>
         <a class="btn btn--primary" href="/register.html">Sign Up</a>
@@ -44,7 +40,7 @@
         <a href="/index.html">All</a>
         <a href="/products/brands.html">Brands</a>
         <a href="/products/trending.html">Trending</a>
-        <a href="/products/mens.html">Mens</a>
+        <a class="is-active" href="/products/mens.html">Mens</a>
         <a href="/products/womens.html">Womens</a>
         <a href="/products/kids.html">Kids</a>
       </div>
@@ -86,14 +82,14 @@
   </main>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="site-footer">
-    <nav class="footer-nav">
-      <a href="/index.html">Home</a>
-      <a href="/products/mens.html">Shop</a>
-      <a href="#">FAQ</a>
-      <a href="#">Contact</a>
-      <a href="#">Our Story</a>
-    </nav>
-  </footer>
+<footer class="site-footer">
+  <nav class="footer-nav">
+    <a href="/index.html">Home</a>
+    <a href="/products/brands.html">Shop</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/about.html">Our Story</a>
+  </nav>
+</footer>
 </body>
 </html>

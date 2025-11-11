@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>StockY – Brands</title>
+  <title>StockY • Brands</title>
   <link rel="stylesheet" href="/style.css" />
-  <script defer src="/script.js"></script>
+  <script defer src="/transition.js"></script>
+  <script defer src="/theme.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -33,7 +34,7 @@
     <nav class="category-bar">
       <div class="container category-bar__inner">
         <a href="/index.html">All</a>
-        <a href="/products/brands.html">Brands</a>
+        <a class="is-active" href="/products/brands.html">Brands</a>
         <a href="/products/trending.html">Trending</a>
         <a href="/products/mens.html">Mens</a>
         <a href="/products/womens.html">Womens</a>
@@ -50,30 +51,22 @@
     <section class="section">
       <h2 class="section__title">Top Brands</h2>
       <div class="brands-grid">
-        <a href="#" class="card card--brand">
-          <div class="card__img">Jordan</div>
-        </a>
-        <a href="#" class="card card--brand">
-          <div class="card__img">Nike</div>
-        </a>
-        <a href="#" class="card card--brand">
-          <div class="card__img">Adidas</div>
-        </a>
-        <a href="#" class="card card--brand">
-          <div class="card__img">New Balance</div>
-        </a>
+        <a href="#" class="card card--brand"><div class="card__img">Jordan</div></a>
+        <a href="#" class="card card--brand"><div class="card__img">Nike</div></a>
+        <a href="#" class="card card--brand"><div class="card__img">Adidas</div></a>
+        <a href="#" class="card card--brand"><div class="card__img">New Balance</div></a>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <nav class="footer-nav">
-      <a href="/index.html">Home</a>
-      <a href="/products/brands.html">Shop</a>
-      <a href="#">FAQ</a>
-      <a href="#">Contact</a>
-      <a href="#">Our Story</a>
-    </nav>
-  </footer>
+<footer class="site-footer">
+  <nav class="footer-nav">
+    <a href="/index.html">Home</a>
+    <a href="/products/brands.html">Shop</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/about.html">Our Story</a>
+  </nav>
+</footer>
 </body>
 </html>
