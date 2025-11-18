@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>StockY • Brands</title>
+  <title>StockY • Jordan</title>
   <link rel="stylesheet" href="/style.css" />
   <script defer src="/transition.js"></script>
   <script defer src="/theme.js"></script>
 </head>
 <body>
+  <!-- ============== HEADER ============== -->
   <header class="site-header">
     <div class="container nav">
       <div class="nav__brand">
@@ -17,6 +18,7 @@
         </a>
         <strong>StockY</strong>
       </div>
+
       <label class="nav__search" aria-label="Search">
         <svg width="16" height="16" aria-hidden="true">
           <circle cx="7" cy="7" r="6" stroke="currentColor" fill="none" />
@@ -24,6 +26,7 @@
         </svg>
         <input type="search" placeholder="Search sneakers, brands…" />
       </label>
+
       <div class="nav__cta">
         <a class="btn" href="/login.html">Login</a>
         <a class="btn btn--primary" href="/register.html">Sign Up</a>
@@ -43,46 +46,60 @@
     </nav>
   </header>
 
+  <!-- ============== MAIN ============== -->
   <main class="container page">
+    <!-- Brand hero -->
     <section class="hero">
-      <div class="hero__slide">Popular Brands</div>
+      <div class="hero__slide">
+        Jordan • Iconic Retro & Performance Models
+      </div>
     </section>
 
+    <!-- Jordan collection -->
 <section class="section">
-  <h2 class="section__title">Top Brands</h2>
-  <div class="brands-grid">
+  <h2 class="section__title">Featured Jordan Sneakers</h2>
+  <div class="products-grid">
 
-    <a href="/products/jordan.html" class="card card--brand">
-      <div class="card__img">Jordan</div>
+    <a href="/product.html?id=aj4-cool-grey" class="card card--product">
+      <div class="card__img">AJ4 Cool Grey</div>
+      <div class="card__body">
+        <h3 class="card__title">Air Jordan 4 “Cool Grey”</h3>
+        <p class="card__meta">From $225</p>
+      </div>
     </a>
 
-    <a href="/products/nike.html" class="card card--brand">
-      <div class="card__img">Nike</div>
-    </a>
-
-    <a href="/products/adidas.html" class="card card--brand">
-      <div class="card__img">Adidas</div>
-    </a>
-
-    <a href="/products/newbalance.html" class="card card--brand">
-      <div class="card__img">New Balance</div>
+    <a href="/product.html?id=aj4-bred" class="card card--product">
+      <div class="card__img">AJ4 Bred</div>
+      <div class="card__body">
+        <h3 class="card__title">Air Jordan 4 “Bred”</h3>
+        <p class="card__meta">From $310</p>
+      </div>
     </a>
 
   </div>
 </section>
 
+    <!-- Maybe a little brand blurb -->
+    <section class="section">
+      <h2 class="section__title">About Jordan</h2>
+      <p class="helper-text">
+        From the original AJ1 to modern retros, Jordan sneakers blend basketball heritage with lifestyle design.
+        This collection highlights some of the most recognizable colorways and silhouettes.
+      </p>
+    </section>
   </main>
 
-<footer class="site-footer">
-  <nav class="footer-nav">
-    <a href="/index.html">Home</a>
-    <a class="is-active" href="/products/brands.html">Shop</a>
-    <a href="/faq.html">FAQ</a>
-    <a href="/contact.html">Contact</a>
-    <a href="/about.html">Our Story</a>
-    <a href="/terms.html">Terms</a>
-    <a href="/privacy.html">Privacy</a>
-  </nav>
-</footer>
+  <!-- ============== FOOTER ============== -->
+  <footer class="site-footer">
+    <nav class="footer-nav">
+      <a href="/index.html">Home</a>
+      <a href="/products/brands.html">Shop</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/about.html">Our Story</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+    </nav>
+  </footer>
 </body>
 </html>

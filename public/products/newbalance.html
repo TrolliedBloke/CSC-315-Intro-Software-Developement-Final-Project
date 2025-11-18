@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StockY • New Balance</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script defer src="/transition.js"></script>
+  <script defer src="/theme.js"></script>
+</head>
+<body>
+
+  <!-- ============== HEADER ============== -->
+  <header class="site-header">
+    <div class="container nav">
+
+      <div class="nav__brand">
+        <a href="/index.html" class="nav__home-link">
+          <img src="/assets/logo.png" alt="StockY logo" class="nav__logo-img" />
+        </a>
+        <strong>StockY</strong>
+      </div>
+
+      <!-- Search -->
+      <label class="nav__search" aria-label="Search">
+        <svg width="16" height="16" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" stroke="currentColor" fill="none" />
+          <line x1="12" y1="12" x2="15" y2="15" stroke="currentColor" />
+        </svg>
+        <input type="search" placeholder="Search sneakers, brands…" />
+      </label>
+
+      <!-- Right-side CTA -->
+      <div class="nav__cta">
+        <a class="btn" href="/login.html">Login</a>
+        <a class="btn btn--primary" href="/register.html">Sign Up</a>
+        <button id="theme-toggle" class="btn" title="Theme">🌙</button>
+      </div>
+
+    </div>
+
+    <!-- Category bar -->
+    <nav class="category-bar">
+      <div class="container category-bar__inner">
+        <a href="/index.html">All</a>
+        <a class="is-active" href="/products/brands.html">Brands</a>
+        <a href="/products/trending.html">Trending</a>
+        <a href="/products/mens.html">Mens</a>
+        <a href="/products/womens.html">Womens</a>
+        <a href="/products/kids.html">Kids</a>
+      </div>
+    </nav>
+
+  </header>
+
+  <!-- ============== MAIN CONTENT ============== -->
+  <main class="container page">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__slide">
+        New Balance • 550 • 990v5 • Classics & Modern Runners
+      </div>
+    </section>
+
+    <!-- New Balance Product Grid -->
+    <section class="section">
+      <h2 class="section__title">Featured New Balance Sneakers</h2>
+      <div class="products-grid">
+
+  <a href="/product.html?id=nb-550" class="card card--product">
+    <div class="card__img">NB 550</div>
+    <div class="card__body">
+      <h3 class="card__title">New Balance 550</h3>
+      <p class="card__meta">From $150</p>
+    </div>
+  </a>
+
+  <a href="/product.html?id=nb-990v5" class="card card--product">
+    <div class="card__img">NB 990v5</div>
+    <div class="card__body">
+      <h3 class="card__title">New Balance 990v5</h3>
+      <p class="card__meta">From $185</p>
+    </div>
+  </a>
+
+  <a href="/product.html?id=nb-2002r" class="card card--product">
+    <div class="card__img">NB 2002R</div>
+    <div class="card__body">
+      <h3 class="card__title">New Balance 2002R</h3>
+      <p class="card__meta">From $140</p>
+    </div>
+  </a>
+
+  <a href="/product.html?id=nb-574" class="card card--product">
+    <div class="card__img">NB 574</div>
+    <div class="card__body">
+      <h3 class="card__title">New Balance 574</h3>
+      <p class="card__meta">From $95</p>
+    </div>
+  </a>
+
+</div>
+    </section>
+
+    <!-- Brand info -->
+    <section class="section">
+      <h2 class="section__title">About New Balance</h2>
+      <p class="helper-text">
+        New Balance blends everyday comfort with heritage athletic design. The 550 and 990 series continue to trend
+        across fashion, lifestyle, and sportswear due to their stability, durability, and timeless appeal.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="site-footer">
+    <nav class="footer-nav">
+      <a href="/index.html">Home</a>
+      <a href="/products/brands.html">Shop</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/about.html">Our Story</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+    </nav>
+  </footer>
+
+</body>
+</html>

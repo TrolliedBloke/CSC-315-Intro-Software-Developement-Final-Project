@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StockY • Nike</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script defer src="/transition.js"></script>
+  <script defer src="/theme.js"></script>
+</head>
+<body>
+  <!-- ============== HEADER ============== -->
+  <header class="site-header">
+    <div class="container nav">
+      <div class="nav__brand">
+        <a href="/index.html" class="nav__home-link">
+          <img src="/assets/logo.png" alt="StockY logo" class="nav__logo-img" />
+        </a>
+        <strong>StockY</strong>
+      </div>
+
+      <!-- Search -->
+      <label class="nav__search" aria-label="Search">
+        <svg width="16" height="16" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" stroke="currentColor" fill="none" />
+          <line x1="12" y1="12" x2="15" y2="15" stroke="currentColor" />
+        </svg>
+        <input type="search" placeholder="Search sneakers, brands…" />
+      </label>
+
+      <!-- Right-side CTA -->
+      <div class="nav__cta">
+        <a class="btn" href="/login.html">Login</a>
+        <a class="btn btn--primary" href="/register.html">Sign Up</a>
+        <button id="theme-toggle" class="btn" title="Theme">🌙</button>
+      </div>
+    </div>
+
+    <!-- Category Navigation -->
+    <nav class="category-bar">
+      <div class="container category-bar__inner">
+        <a href="/index.html">All</a>
+        <a class="is-active" href="/products/brands.html">Brands</a>
+        <a href="/products/trending.html">Trending</a>
+        <a href="/products/mens.html">Mens</a>
+        <a href="/products/womens.html">Womens</a>
+        <a href="/products/kids.html">Kids</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============== MAIN CONTENT ============== -->
+  <main class="container page">
+
+    <!-- Hero Banner -->
+    <section class="hero">
+      <div class="hero__slide">
+        Nike • Air Max • Dunks • Performance & Lifestyle Icons
+      </div>
+    </section>
+
+    <!-- Nike Products -->
+    <section class="section">
+      <h2 class="section__title">Featured Nike Sneakers</h2>
+
+     <div class="products-grid">
+
+  <!-- Dunk (already in products.js) -->
+  <a href="/product.html?id=nike-dunk-low" class="card card--product">
+    <div class="card__img">Nike Dunk Low</div>
+    <div class="card__body">
+      <h3 class="card__title">Nike Dunk Low</h3>
+      <p class="card__meta">From $180</p>
+    </div>
+  </a>
+
+  <!-- New: Air Max 270 -->
+  <a href="/product.html?id=nike-air-max-270" class="card card--product">
+    <div class="card__img">Nike Air Max 270</div>
+    <div class="card__body">
+      <h3 class="card__title">Nike Air Max 270</h3>
+      <p class="card__meta">From $160</p>
+    </div>
+  </a>
+
+  <!-- New: Zoom Fly 5 -->
+  <a href="/product.html?id=nike-zoom-fly-5" class="card card--product">
+    <div class="card__img">Nike Zoom Fly 5</div>
+    <div class="card__body">
+      <h3 class="card__title">Nike Zoom Fly 5</h3>
+      <p class="card__meta">From $210</p>
+    </div>
+  </a>
+
+  <!-- New: Air Force 1 -->
+  <a href="/product.html?id=nike-air-force-1" class="card card--product">
+    <div class="card__img">Nike Air Force 1</div>
+    <div class="card__body">
+      <h3 class="card__title">Nike Air Force 1</h3>
+      <p class="card__meta">From $120</p>
+    </div>
+  </a>
+
+</div>
+    </section>
+
+    <!-- Brand Info -->
+    <section class="section">
+      <h2 class="section__title">About Nike</h2>
+      <p class="helper-text">
+        Nike continues to dominate both sports and lifestyle footwear with iconic silhouettes like the Air Force 1,
+        Air Max series, and Dunk models. Whether you're into running, hoops, or everyday wear, Nike offers a blend of
+        technology and culture that shapes sneaker trends worldwide.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="site-footer">
+    <nav class="footer-nav">
+      <a href="/index.html">Home</a>
+      <a href="/products/brands.html">Shop</a>
+      <a href="/faq.html">FAQ</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/about.html">Our Story</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+    </nav>
+  </footer>
+
+</body>
+</html>

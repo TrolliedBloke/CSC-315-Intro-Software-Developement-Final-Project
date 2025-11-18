@@ -3,9 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Product • Air Jordan 4 Retro “Cool Grey”</title>
+  <title>Product • StockY</title>
   <link rel="stylesheet" href="/style.css" />
+
+  <!-- scripts -->
   <script defer src="/transition.js"></script>
+  <script defer src="/products.js"></script>  
   <script defer src="/script.js"></script>
 </head>
 <body>
@@ -72,23 +75,10 @@
           <p class="card__meta">Style Code: 308497-007 • Year: 2019 • Condition: Brand New in Box</p>
         </header>
 
-        <div class="product__sizes">
-          <p class="label">Select Size (US M):</p>
-          <div class="size-grid" id="sizeGrid" role="listbox" aria-label="Shoe sizes">
-            <button role="option" class="size" data-size="8"   data-price="225">8</button>
-            <button role="option" class="size" data-size="8.5" data-price="234">8.5</button>
-            <button role="option" class="size" data-size="9"   data-price="256">9</button>
-            <button role="option" class="size" data-size="9.5" data-price="263">9.5</button>
-            <button role="option" class="size" data-size="10"  data-price="289">10</button>
-            <button role="option" class="size" data-size="10.5" data-price="282">10.5</button>
-            <button role="option" class="size" data-size="11"  data-price="271">11</button>
-            <button role="option" class="size" data-size="11.5" data-price="278">11.5</button>
-            <button role="option" class="size" data-size="12"  data-price="286">12</button>
-            <button role="option" class="size" data-size="12.5" data-price="267">12.5</button>
-            <button role="option" class="size" data-size="13"  data-price="259">13</button>
-            <button role="option" class="size" data-size="14"  data-price="250">14</button>
-          </div>
-        </div>
+     <div class="product__sizes">
+  <p class="label">Select Size (US M):</p>
+  <div class="size-grid" id="sizeGrid" role="listbox" aria-label="Shoe sizes"></div>
+</div>
 
         <div class="buy-bar card">
           <div class="price">
@@ -138,76 +128,126 @@
 
   </main>
 
-  <script>
-    const PRODUCT = {
-      id: "aj4-cool-grey",
-      title: "Air Jordan 4 “Cool Grey”",
-      thumb: "/assets/placeholder-shoe.png"
-    };
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("id") || "aj4-cool-grey";
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const grid = document.getElementById("sizeGrid");
-      const checkoutBtn = document.getElementById("checkoutBtn");
-      const priceEl = document.querySelector(".price__value");
-      const mainImg = document.querySelector(".product__main img");
-      const fmt = (n) => `$${Number(n).toFixed(2)}`;
+    const catalog = window.PRODUCTS || {};
+    const product = catalog[productId];
 
-      // Restore previous selection (optional)
-      try {
-        const saved = JSON.parse(localStorage.getItem("cart") || "[]");
-        const item = Array.isArray(saved) ? saved[0] : null;
-        if (item?.size && item?.price) {
-          const btn = grid?.querySelector(`.size[data-size="${item.size}"]`);
-          if (btn) {
-            btn.classList.add("is-selected");
-            btn.setAttribute("aria-selected", "true");
-            priceEl.textContent = fmt(item.price);
-            checkoutBtn.disabled = false;
-          }
-        }
-      } catch (_) {}
+    if (!product) {
+      alert("Product not found. Showing default shoe.");
+      return;
+    }
 
-      // Thumbnail swap
-      document.querySelector(".product__thumbs")?.addEventListener("click", (e) => {
-        const t = e.target.closest(".thumb img");
-        if (!t || !mainImg) return;
-        mainImg.src = t.src;
-        document.querySelectorAll(".thumb").forEach(b => b.classList.remove("is-active"));
-        t.closest(".thumb")?.classList.add("is-active");
+    const titleEl    = document.querySelector(".product__header .section__title");
+    const metaEl     = document.querySelector(".product__header .card__meta");
+    const mainImg    = document.querySelector(".product__main img");
+    const thumbsWrap = document.querySelector(".product__thumbs");
+    const sizeGrid   = document.getElementById("sizeGrid");
+    const priceEl    = document.querySelector(".price__value");
+    const checkoutBtn= document.getElementById("checkoutBtn");
+
+    const fmt = (n) => `$${Number(n).toFixed(2)}`;
+
+    // ---- Fill basic info ----
+    document.title = `${product.title} • StockY`;
+
+    if (titleEl) titleEl.textContent = product.title;
+    if (metaEl) {
+      metaEl.textContent =
+        `Style Code: ${product.styleCode} • Year: ${product.year} • Condition: ${product.condition}`;
+    }
+
+    if (mainImg) {
+      mainImg.src = product.hero;
+      mainImg.alt = product.title;
+    }
+
+    // ---- Thumbnails ----
+    if (thumbsWrap && product.thumbs?.length) {
+      thumbsWrap.innerHTML = "";
+      product.thumbs.forEach((src, index) => {
+        const btn = document.createElement("button");
+        btn.className = "thumb" + (index === 0 ? " is-active" : "");
+        btn.innerHTML = `<img src="${src}" alt="${product.title} view ${index + 1}">`;
+        btn.addEventListener("click", () => {
+          if (mainImg) mainImg.src = src;
+          thumbsWrap.querySelectorAll(".thumb").forEach(t => t.classList.remove("is-active"));
+          btn.classList.add("is-active");
+        });
+        thumbsWrap.appendChild(btn);
       });
+    }
 
-      // Size selection
-      grid?.addEventListener("click", (e) => {
+    // ---- Sizes ----
+    if (sizeGrid && Array.isArray(product.sizes)) {
+      sizeGrid.innerHTML = "";
+      product.sizes.forEach(({ size, price }) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "size";
+        b.dataset.size = size;
+        b.dataset.price = price;
+        b.setAttribute("role", "option");
+        b.textContent = size;
+        sizeGrid.appendChild(b);
+      });
+    }
+
+    let selectedSize  = null;
+    let selectedPrice = null;
+
+    if (sizeGrid) {
+      sizeGrid.addEventListener("click", (e) => {
         const btn = e.target.closest(".size");
         if (!btn) return;
 
-        grid.querySelectorAll(".size").forEach(b => {
+        sizeGrid.querySelectorAll(".size").forEach(b => {
           b.classList.remove("is-selected");
           b.setAttribute("aria-selected", "false");
         });
+
         btn.classList.add("is-selected");
         btn.setAttribute("aria-selected", "true");
 
-        const price = Number(btn.dataset.price);
-        priceEl.textContent = fmt(price);
+        selectedSize  = btn.dataset.size;
+        selectedPrice = Number(btn.dataset.price);
 
-        const item = { ...PRODUCT, size: btn.dataset.size, price, qty: 1 };
-        localStorage.setItem("cart", JSON.stringify([item]));
+        if (!Number.isNaN(selectedPrice) && priceEl) {
+          priceEl.textContent = fmt(selectedPrice);
+        }
 
-        checkoutBtn.disabled = false;
+        // Save as one-item cart in localStorage
+        const cartItem = {
+          id: product.id,
+          title: product.title,
+          brand: product.brand,
+          size: selectedSize,
+          price: selectedPrice,
+          qty: 1,
+          hero: product.hero
+        };
+        localStorage.setItem("cart", JSON.stringify([cartItem]));
+
+        if (checkoutBtn) checkoutBtn.disabled = false;
       });
+    }
 
-      checkoutBtn?.addEventListener("click", (e) => {
-        const selected = document.querySelector(".size.is-selected");
-        if (!selected) {
+    // ---- Checkout button ----
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener("click", (e) => {
+        if (!selectedSize) {
           e.preventDefault();
           alert("Please select a size first.");
           return;
         }
         window.location.href = "/checkout.html";
       });
-    });
-  </script>
+    }
+  });
+</script>
 
 </body>
 </html>
