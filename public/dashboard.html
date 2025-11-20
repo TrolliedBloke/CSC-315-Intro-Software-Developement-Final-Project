@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard • StockY</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="container nav">
+      <!-- Logo -->
+      <div class="nav__brand">
+        <a href="/index.html" class="nav__home-link">
+          <img src="/assets/logo.png" alt="StockY logo" class="nav__logo-img" />
+        </a>
+        <strong>StockY</strong>
+      </div>
+
+      <!-- Right-side buttons -->
+      <div class="nav__cta">
+        <button id="logout-btn" class="btn btn--primary">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main class="container page">
+    <h1>Dashboard</h1>
+    <p id="user-info">Loading user info...</p>
+
+    <section>
+      <h2>Your Info</h2>
+      <ul>
+        <li id="first-name"></li>
+        <li id="last-name"></li>
+        <li id="email"></li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    // Fetch session user info
+    fetch("/session-user")
+      .then(res => res.json())
+      .then(data => {
+        if (!data.loggedIn) {
+          // Not logged in → redirect to login
+          window.location.href = "/login.html";
+        } else {
+          // Display user info
+          document.getElementById("user-info").textContent =
+            `Logged in as ${data.first} ${data.last} (${data.email})`;
+
+          document.getElementById("first-name").textContent = `First Name: ${data.first}`;
+          document.getElementById("last-name").textContent = `Last Name: ${data.last}`;
+          document.getElementById("email").textContent = `Email: ${data.email}`;
+        }
+      });
+
+    // Logout button
+    document.getElementById("logout-btn").addEventListener("click", () => {
+      window.location.href = "/logout";
+    });
+  </script>
+
+</body>
+</html>
