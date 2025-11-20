@@ -1,7 +1,7 @@
 console.log("✅ StockY script.js loaded");
 
 
-// Highlight Current Category Link
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const currentPath = window.location.pathname;
