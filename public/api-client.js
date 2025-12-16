@@ -1,10 +1,11 @@
 // API Client for fetching products from the backend
-// This replaces the static products.js file
+// Falls back to static products.js if API is unavailable
 
 const API_BASE = '/api/products';
 
 // Cache for products
 let productsCache = null;
+let staticProductsLoaded = false;
 
 /**
  * Fetch all products from the API
@@ -33,12 +34,18 @@ async function fetchProducts(options = {}) {
     
     return products;
   } catch (error) {
-    console.error('Error fetching products:', error);
+    console.error('Error fetching products from API, trying static fallback:', error);
     
     // Fallback to cached products if available
     if (productsCache) {
       console.warn('Using cached products due to API error');
       return productsCache;
+    }
+    
+    // Fallback to static products.js
+    if (typeof window.PRODUCTS !== 'undefined') {
+      console.log('Using static products.js as fallback');
+      return Object.values(window.PRODUCTS);
     }
     
     // Last resort: return empty array
@@ -57,16 +64,32 @@ async function fetchProduct(productId) {
     
     if (!response.ok) {
       if (response.status === 404) {
-        return null;
+        // Try fallback to static products
+        return getProductFromStatic(productId);
       }
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     
     return await response.json();
   } catch (error) {
-    console.error('Error fetching product:', error);
-    return null;
+    console.error('Error fetching product from API, trying static fallback:', error);
+    // Fallback to static products.js
+    return getProductFromStatic(productId);
   }
+}
+
+/**
+ * Get product from static products.js (fallback)
+ * @param {string} productId - Product ID
+ * @returns {Object|null} Product object or null
+ */
+function getProductFromStatic(productId) {
+  // Check if static products are available
+  if (typeof window.PRODUCTS !== 'undefined' && window.PRODUCTS[productId]) {
+    console.log('Using static product data as fallback');
+    return window.PRODUCTS[productId];
+  }
+  return null;
 }
 
 /**

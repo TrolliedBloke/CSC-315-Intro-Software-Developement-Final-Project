@@ -9,7 +9,8 @@ const productRoutes = require('./routes/products');
 const { requireLogin } = require('./middleware/auth');
 
 const app = express();
-const port = process.env.PORT || 3001;
+const basePort = Number(process.env.PORT) || 3001;
+const host = process.env.HOST || '127.0.0.1';
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -48,6 +49,21 @@ app.get("/health", (req, res) => {
 });
 
 
-app.listen(port, () => {
-  console.log(`Listening on http://127.0.0.1:${port}/`);
-});
+function startServer(port) {
+  const server = app.listen(port, host, () => {
+    console.log(`Listening on http://${host}:${port}/`);
+  });
+
+  server.on('error', (err) => {
+    if (err && err.code === 'EADDRINUSE') {
+      const nextPort = port + 1;
+      console.warn(`Port ${port} is in use on ${host}. Trying ${nextPort}...`);
+      startServer(nextPort);
+      return;
+    }
+    console.error('Server failed to start:', err);
+    process.exit(1);
+  });
+}
+
+startServer(basePort);

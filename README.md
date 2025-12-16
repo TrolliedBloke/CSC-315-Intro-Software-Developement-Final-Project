@@ -65,7 +65,7 @@ cd group-project-ArthurVandross
 ### Step 2: Install Dependencies
 
 ```bash
-npm install
+   npm install
 ```
 
 ### Step 3: Set Up PostgreSQL Database
