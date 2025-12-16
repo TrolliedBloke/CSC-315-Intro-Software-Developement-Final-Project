@@ -8,7 +8,7 @@
 
   <!-- scripts -->
   <script defer src="/transition.js"></script>
-  <script defer src="/products.js"></script>  
+  <script defer src="/api-client.js"></script>
   <script defer src="/script.js"></script>
 </head>
 <body>
@@ -34,8 +34,13 @@
 
       <!-- Right-side buttons -->
       <div class="nav__cta">
-        <a class="btn" href="/login.html">Login</a>
-        <a class="btn btn--primary" href="/register.html">Sign Up</a>
+        <!-- Login / Sign Up Links -->
+        <a class="btn" href="/login.html" id="login-link">Login</a>
+        <a class="btn btn--primary" href="/register.html" id="signup-link">Sign Up</a>
+        <!-- Logged-in user display -->
+        <span id="user-display" style="display:none;">
+          Hello, <strong id="user-name"></strong>! <a href="/logout">Logout</a>
+        </span>
         <button id="theme-toggle" class="btn" aria-label="Toggle color theme" title="Theme">🌙</button>
       </div>
     </div>
@@ -105,11 +110,8 @@
 
     <section class="section">
       <h2 class="section__title">You Might Also Like</h2>
-      <div class="products-grid">
-        <a class="card card--product" href="/product.html?id=aj4-bred">
-          <div class="card__img">Shoe #1</div>
-          <div class="card__body"><h3 class="card__title">AJ4 “Bred”</h3><p class="card__meta">$310</p></div>
-        </a>
+      <div class="products-grid" id="related-products">
+        <!-- Related products will be loaded here -->
       </div>
     </section>
 
@@ -129,15 +131,45 @@
   </main>
 
  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const params = new URLSearchParams(window.location.search);
-    const productId = params.get("id") || "aj4-cool-grey";
+  // Check session-user and update header
+  fetch("/session-user")
+    .then(res => res.json())
+    .then(data => {
+      if (data.loggedIn) {
+        // Hide login/signup buttons
+        const loginLink = document.getElementById("login-link");
+        const signupLink = document.getElementById("signup-link");
+        const userDisplay = document.getElementById("user-display");
+        const userName = document.getElementById("user-name");
+        
+        if (loginLink) loginLink.style.display = "none";
+        if (signupLink) signupLink.style.display = "none";
+        if (userDisplay) userDisplay.style.display = "inline";
+        if (userName) userName.textContent = `${data.first} ${data.last}`;
+      }
+    });
 
-    const catalog = window.PRODUCTS || {};
-    const product = catalog[productId];
+  document.addEventListener("DOMContentLoaded", async () => {
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("id");
+
+    if (!productId) {
+      alert("Product ID is required.");
+      window.location.href = "/index.html";
+      return;
+    }
+
+    // Fetch product from API
+    if (!window.ProductAPI) {
+      alert("API client not loaded. Please refresh the page.");
+      return;
+    }
+
+    const product = await window.ProductAPI.fetchProduct(productId);
 
     if (!product) {
-      alert("Product not found. Showing default shoe.");
+      alert("Product not found.");
+      window.location.href = "/index.html";
       return;
     }
 
@@ -245,6 +277,22 @@
         }
         window.location.href = "/checkout.html";
       });
+    }
+
+    // Load related products
+    if (product.related && product.related.length > 0 && window.ProductAPI && window.ProductRenderer) {
+      try {
+        const relatedProducts = await Promise.all(
+          product.related.slice(0, 4).map(id => window.ProductAPI.fetchProduct(id))
+        );
+        const validRelated = relatedProducts.filter(p => p !== null);
+        const relatedGrid = document.getElementById('related-products');
+        if (relatedGrid && validRelated.length > 0) {
+          window.ProductRenderer.renderProductGrid(validRelated, relatedGrid);
+        }
+      } catch (error) {
+        console.error('Error loading related products:', error);
+      }
     }
   });
 </script>

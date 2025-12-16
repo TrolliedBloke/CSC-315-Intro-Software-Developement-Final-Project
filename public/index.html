@@ -97,7 +97,9 @@
     </nav>
   </footer>
 
-  <!-- ================= SESSION JS ================= -->
+  <!-- ================= SCRIPTS ================= -->
+  <script defer src="/api-client.js"></script>
+  <script defer src="/product-renderer.js"></script>
   <script>
     // Check session-user and update header
     fetch("/session-user")
@@ -113,6 +115,32 @@
           document.getElementById("user-name").textContent = `${data.first} ${data.last}`;
         }
       });
+    
+    // Load and render products
+    document.addEventListener("DOMContentLoaded", async () => {
+      if (!window.ProductAPI || !window.ProductRenderer) {
+        console.error('API client or renderer not loaded');
+        return;
+      }
+      
+      try {
+        // Fetch recommended products (limit to 6)
+        const recommended = await window.ProductAPI.fetchProducts({ limit: 6 });
+        const recommendedGrid = document.querySelector('.section:nth-of-type(2) .products-grid');
+        if (recommendedGrid) {
+          window.ProductRenderer.renderProductGrid(recommended, recommendedGrid);
+        }
+        
+        // Fetch recently viewed (could be from localStorage or just show more products)
+        const recentlyViewed = await window.ProductAPI.fetchProducts({ limit: 4 });
+        const recentlyViewedGrid = document.querySelector('.section:nth-of-type(1) .products-grid');
+        if (recentlyViewedGrid) {
+          window.ProductRenderer.renderProductGrid(recentlyViewed, recentlyViewedGrid);
+        }
+      } catch (error) {
+        console.error('Error loading products:', error);
+      }
+    });
   </script>
 </body>
 </html>
